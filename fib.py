@@ -65,6 +65,3 @@ def fib(n):
             wtl("FibNum.txt",n-1,str(b))
             wtl("FibNum.txt",n-2,str(a))
             return cache[n-2]+cache[n-1]
-
-
-print(fib(600))
