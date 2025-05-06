@@ -1,4 +1,7 @@
 from time import time
+import sys
+
+sys.setrecursionlimit(1000000)
 
 def timer(func):
     # This function shows the execution time of
@@ -36,7 +39,7 @@ def wtl(file_path, line_num, text_to_write):
 
 cache = {0:0,
         1:1,}
-@timer
+
 def fib(n):
     if n in cache:
         return cache[n]
@@ -65,3 +68,11 @@ def fib(n):
             wtl("FibNum.txt",n-1,str(b))
             wtl("FibNum.txt",n-2,str(a))
             return cache[n-2]+cache[n-1]
+
+@timer
+def main(n): # Used for tracking runtime w/ @timer Decorator
+    num = fib(n)
+    return num, f"Computed the {n}th fibonacci number"
+
+a, b = main(1000)
+print(b)
